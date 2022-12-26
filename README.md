@@ -1,4 +1,4 @@
-# bookshelfapi
+# DICODING bookshelfapi Submission
 Terdapat 5 kriteria utama yang harus Anda penuhi dalam membuat proyek Bookshelf API.
 
 ### Kriteria 1 : API dapat menyimpan buku
@@ -8,7 +8,7 @@ API yang Anda buat harus dapat menyimpan buku melalui _route_:
 *   Method : **POST**
 *   URL : **/books**
 *   Body Request:
-    
+```   
     {
         "name": string,
         "year": number,
@@ -19,10 +19,10 @@ API yang Anda buat harus dapat menyimpan buku melalui _route_:
         "readPage": number,
         "reading": boolean
     }
-    
+```    
 
 Objek buku yang disimpan pada _server_ harus memiliki struktur seperti contoh di bawah ini:
-
+```
 {
     **"id": "Qbax5Oy7L8WKf74l",**
     "name": "Buku A",
@@ -37,7 +37,7 @@ Objek buku yang disimpan pada _server_ harus memiliki struktur seperti contoh d
   **  "insertedAt": "2021-03-04T09:11:44.598Z",
     "updatedAt": "2021-03-04T09:11:44.598Z"**
 }
-
+```
 Properti yang ditebalkan diolah dan didapatkan di sisi _server_. Berikut penjelasannya:
 
 *   id : nilai id haruslah unik. Untuk membuat nilai unik, Anda bisa memanfaatkan [nanoid](https://www.npmjs.com/package/nanoid).
@@ -51,36 +51,36 @@ Server harus merespons **gagal** bila:
 *   Client tidak melampirkan properti namepada _request body_. Bila hal ini terjadi, maka _server_ akan merespons dengan:
     *   Status Code : **400**
     *   Response Body:
-        
+```        
         {
             "status": "fail",
             "message": "Gagal menambahkan buku. Mohon isi nama buku"
         }
-        
+```        
 *   Client melampirkan nilai properti readPage yang lebih besar dari nilai properti pageCount. Bila hal ini terjadi, maka _server_ akan merespons dengan:
     *   Status Code : **400**
     *   Response Body:
-        
+```        
         {
             "status": "fail",
             "message": "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount"
         }
-        
+```       
 *   Server gagal memasukkan buku karena alasan umum (_generic error_). Bila hal ini terjadi, maka _server_ akan merespons dengan:
     *   Status Code : **500**
     *   Response Body:
-        
+```        
         {
             "status": "error",
             "message": "Buku gagal ditambahkan"
         }
-        
+```        
 
 Bila buku **berhasil** dimasukkan, _server_ harus mengembalikan respons dengan:
 
 *   Status Code : **201**
 *   Response Body:
-    
+```    
     {
         "status": "success",
         "message": "Buku berhasil ditambahkan",
@@ -88,7 +88,7 @@ Bila buku **berhasil** dimasukkan, _server_ harus mengembalikan respons dengan
             "bookId": "1L7ZtDUFeGs7VlEt"
         }
     }
-    
+```    
 
   
 
