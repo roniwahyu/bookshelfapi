@@ -104,7 +104,7 @@ Server harus mengembalikan respons dengan:
 
 *   Status Code : **200**
 *   Response Body:
-    
+```    
     {
         "status": "success",
         "data": {
@@ -128,16 +128,16 @@ Server harus mengembalikan respons dengan:
         }
     }
     
-
+```
 Jika **belum** terdapat buku yang dimasukkan, _server_ bisa merespons dengan _array_ books kosong.
-
+```
 {
     "status": "success",
     "data": {
         "books": \[\]
     }
 }
-
+```
   
 
 ### Kriteria 3 : API dapat menampilkan detail buku
@@ -152,18 +152,18 @@ Bila buku dengan id yang dilampirkan oleh _client_ tidak ditemukan, maka _serv
 
 *   Status Code : **404**
 *   Response Body:
-    
+```    
     {
         "status": "fail",
         "message": "Buku tidak ditemukan"
     }
-    
+```    
 
 Bila buku dengan id yang dilampirkan **ditemukan**, maka _server_ harus mengembalikan respons dengan:
 
 *   Status Code : **200**
 *   Response Body:
-    
+```    
     {
         "status": "success",
         "data": {
@@ -184,7 +184,7 @@ Bila buku dengan id yang dilampirkan **ditemukan**, maka _server_ harus mengem
         }
     }
     
-
+```
   
 
 ### Kriteria 4 : API dapat mengubah data buku
@@ -194,7 +194,7 @@ API yang Anda buat harus dapat mengubah data buku berdasarkan id melalui _route_
 *   Method : **PUT**
 *   URL : **/books/{bookId}**
 *   Body Request:
-    
+```   
     {
         "name": string,
         "year": number,
@@ -206,47 +206,47 @@ API yang Anda buat harus dapat mengubah data buku berdasarkan id melalui _route_
         "reading": boolean
     }
     
-
+```
 Server harus merespons **gagal** bila:
 
 *   Client tidak melampirkan properti name pada _request body_. Bila hal ini terjadi, maka _server_ akan merespons dengan:
     *   Status Code : **400**
     *   Response Body:
-        
+```        
         {
             "status": "fail",
             "message": "Gagal memperbarui buku. Mohon isi nama buku"
         }
-        
+```        
 *   Client melampirkan nilai properti readPage yang lebih besar dari nilai properti pageCount. Bila hal ini terjadi, maka _server_ akan merespons dengan:
     *   Status Code : **400**
     *   Response Body:
-        
+```        
         {
             "status": "fail",
             "message": "Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount"
         }
-        
+```        
 *   Idyang dilampirkan oleh _client_ tidak ditemukkan oleh _server_. Bila hal ini terjadi, maka _server_ akan merespons dengan:
     *   Status Code : **404**
     *   Response Body:
-        
+ ```       
         {
             "status": "fail",
             "message": "Gagal memperbarui buku. Id tidak ditemukan"
         }
-        
+ ```       
 
 Bila buku **berhasil diperbarui**, _server_ harus mengembalikan respons dengan:
 
 *   Status Code : **200**
 *   Response Body:
-    
+```    
     {
         "status": "success",
         "message": "Buku berhasil diperbarui"
     }
-    
+```   
 
   
 
@@ -261,19 +261,20 @@ Bila id yang dilampirkan tidak dimiliki oleh buku manapun, maka _server_ harus 
 
 *   Status Code : **404**
 *   Response Body:
-    
+```    
     {
         "status": "fail",
         "message": "Buku gagal dihapus. Id tidak ditemukan"
     }
-    
+```   
 
 Bila id dimiliki oleh salah satu buku, maka buku tersebut harus dihapus dan _server_ mengembalikan respons berikut:
 
 *   Status Code : **200**
 *   Response Body:
-    
+```    
     {
         "status": "success",
         "message": "Buku berhasil dihapus"
     }
+```
